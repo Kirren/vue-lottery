@@ -1,0 +1,17 @@
+form#newticket.container.py-5
+  .row
+    .col-12.col-md-8
+      - for(var val=1; val <= 45; val++)
+          button(@click="toggleNumbers").btn.number-btn= val
+    #newticket_bonus_area.col-6.col-md-4.text-center.pt-2
+      label(for='newticket_bonus').form-check-label
+        input#newticket_bonus(type='checkbox').form-check-input
+        | бонусный билет
+
+  hr
+  .row
+    .col-12
+      button#create_ticket(@click="saveNumbers", :disabled="numbers.length<12").btn.btn-secondary Создать билет
+      button#random_ticket(@click="randomNumbers").btn.btn-info Случайно
+      button#cancel_ticket(@click="deleteNumbers").btn.btn-danger Отменить
+
