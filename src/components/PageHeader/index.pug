@@ -1,0 +1,86 @@
+nav.navbar.navbar-expand-lg.navbar-light.bg-light
+  router-link(to="/").navbar-brand Нас уже:
+    strong  {{ usersAmount}}
+  button(type="button", data-toggle="collapse",
+  data-target="#navbar", aria-controls="navbar",
+  aria-expanded="false", aria-label="Toggle navigation").navbar-toggler
+    span.navbar-toggler-icon
+  #navbar.collapse.navbar-collapse.justify-content-between
+    ul.navbar-nav
+      li.nav-item
+        router-link#profileLink(to="#").nav-link Кабинет
+          span.sr-only (current)
+      li.nav-item.dropdown
+        a#lotteryLink(href="#", data-toggle="dropdown", aria-haspopup="true", aria-expanded="false").nav-link.dropdown-toggle Лотерея
+        ul(aria-labelledby="lotteryLink").dropdown-menu
+          li.dropdown-item
+            router-link(to="#") Архив Ваших розыгрышей
+          li.dropdown-item
+            router-link(to="#") Последние победители
+          li.dropdown-divider
+          li.dropdown-item
+            router-link(to="#") Лидеры продаж
+          li.dropdown-item
+            router-link(to="#") Лидеры накопительных розыгрышей
+      li.nav-item
+        router-link#messagesLink(to="#").nav-link Сообщения
+      li.nav-item.dropdown
+        a#accountsLink(href="#", data-toggle="dropdown", aria-haspopup="true", aria-expanded="false").nav-link.dropdown-toggle Счета и бонусы
+        ul(aria-labelledby="accountsLink").dropdown-menu
+          li.dropdown-item
+            router-link(to="#") Основной счёт
+          li.dropdown-divider
+          h6.dropdown-header  Бонусная программа
+          li.dropdown-item
+            router-link(to="#") Балловый счёт
+          li.dropdown-item
+            router-link(to="#") Бонусный счёт
+          li.dropdown-divider
+          h6.dropdown-header  Реферальная программа
+          li.dropdown-item
+            router-link(to="#") Партнёрский счёт
+          li.dropdown-item
+            router-link(to="#") Приглашенные партнёры
+          li.dropdown-divider
+          h6.dropdown-header  Социальная программа
+          li.dropdown-item
+            router-link(to="#") Счёт социального фонда
+      li.nav-item.dropdown
+        a#infoLink(href="#", data-toggle="dropdown", aria-haspopup="true", aria-expanded="false").nav-link.dropdown-toggle Информация
+        ul(aria-labelledby="infoLink").dropdown-menu
+          li.dropdown-item
+            router-link(to="#") Правила
+          li.dropdown-item
+            router-link(to="#") Правила социального фонда
+          li.dropdown-divider
+          li.dropdown-item
+            router-link(to="#") Договор оферты
+          li.dropdown-divider
+          h6.dropdown-header Приложения
+          li.dropdown-item
+            router-link(to="#") Приложение для Android
+
+    ul.navbar-nav.d-none.d-md-inline-block
+      li.nav-item.dropdown
+        a#userLink(href="#", data-toggle='dropdown', aria-haspopup="true", aria-expanded="false").nav-link.dropdown-toggle {{ user.name }}
+        ul(aria-labelledby="userLink").dropdown-menu.dropdown-menu-right
+          li.dropdown-item
+            strong {{ user.name }}
+            p {{ user.email }}
+          li.dropdown-divider
+          li.dropdown-item
+            router-link(to="#")
+              | Сменить язык
+              img(src="#")
+          li.dropdown-divider
+          li.dropdown-item
+            router-link(to="#") Редактировать профиль
+          li.dropdown-item
+            router-link(to="#") Сменить пароль
+          li.dropdown-divider
+          li.dropdown-item
+            router-link(to="/")
+              | Выйти
+              i.fa.fa-sign-out.ml-2
+
+
