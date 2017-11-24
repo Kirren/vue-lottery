@@ -1,4 +1,6 @@
-// import $ from 'jquery'
+import Vuex from 'vuex'
+
+import LoginBlock from '@/components/LoginBlock/LoginBlock'
 
 export default {
   name: 'PageHeader',
@@ -10,5 +12,14 @@ export default {
         email: 'email@mail.com'
       }
     }
+  },
+  computed: {
+    ...Vuex.mapGetters(['isLoggedIn'])
+  },
+  methods: {
+    ...Vuex.mapActions(['logout'])
+  },
+  components: {
+    LoginBlock
   }
 }

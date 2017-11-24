@@ -61,7 +61,7 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
             router-link(to="#") Приложение для Android
 
     ul.navbar-nav.d-none.d-md-inline-block
-      li.nav-item.dropdown
+      li(v-if="isLoggedIn").nav-item.dropdown
         a#userLink(href="#", data-toggle='dropdown', aria-haspopup="true", aria-expanded="false").nav-link.dropdown-toggle {{ user.name }}
         ul(aria-labelledby="userLink").dropdown-menu.dropdown-menu-right
           li.dropdown-item
@@ -79,8 +79,11 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
             router-link(to="#") Сменить пароль
           li.dropdown-divider
           li.dropdown-item
-            router-link(to="/")
-              | Выйти
+            router-link(to="/", v-if="isLoggedIn", @click="logout")
+              | log out
               i.fa.fa-sign-out.ml-2
+      li(v-else).nav-item
+        button(type="button", data-toggle="modal", data-target="#loginModal").btn.btn-primary Log in
+        LoginBlock
 
 

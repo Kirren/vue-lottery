@@ -2,8 +2,25 @@
 
 export default {
   name: 'LoginBlock',
-  data () {
-    return {}
+  computed: {
+    users () {
+      return this.$store.getters.users
+    }
   },
-  methods: {}
+  data () {
+    return {
+      inputName: '',
+      inputPass: ''
+    }
+  },
+  methods: {
+    login () {
+      this.$store.dispatch('login', {
+        username: this.inputName,
+        password: this.inputPass
+      }).then(res => {
+        this.$router.push('/')
+      })
+    }
+  }
 }
