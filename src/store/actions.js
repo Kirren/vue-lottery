@@ -1,6 +1,7 @@
+/*
 import Vue from 'vue'
 import VueResource from 'vue-resource'
-import * as types from 'types'
+// import * as types from 'types'
 
 Vue.use(VueResource)
 
@@ -19,7 +20,11 @@ export default {
     localStorage.removeItem('token')
     commit('LOGOUT')
   },
-  addUser ({commit}, user) {
+  registerUser ({commit}, user) {
     commit('ADD_USER', user)
+  },
+  addNumbersToTicket ({commit}, numbers) {
+    commit('ADD_TICKET', numbers)
   }
 }
+*/

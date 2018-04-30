@@ -1,4 +1,5 @@
 import $ from 'jquery'
+import { mapState } from 'vuex'
 
 export default {
   name: 'LotteryBlock',
@@ -9,6 +10,10 @@ export default {
       maxNumbersLength: 12
     }
   },
+  computed: mapState({
+    ticket: state => state.user.ticket,
+    hasTicket: state => state.user.hasTicket
+  }),
   methods: {
     toggleNumbers: function (e) {
       let clickedButton = e.target
@@ -81,7 +86,15 @@ export default {
       console.log('uncolor all ' + this.numbers)
     },
     saveNumbers: function () {
-      // console.log(typeof $('.btn'))
+      console.log('current ticket: ' + this.ticket)
+      console.log('ticket exists? -> ' + this.hasTicket)
+      if (this.hasTicket === true) {
+        this.$store.state.user.ticket = []
+        console.log('should be empty array -> new: ' + this.ticket)
+      }
+      this.$store.dispatch('addNumbersToTicket', this.numbers).then(() => {
+        this.$router.push('/')
+      })
     }
   }
 }

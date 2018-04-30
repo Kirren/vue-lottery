@@ -6,12 +6,24 @@
         button(type="button", data-dismiss="modal", aria-label="Close").close
           span &times;
       .modal-body
-        form(method="post", @submit.prevent="login({ inputName, inputPass })")
+        form(@submit="login")
           .form-group.text-left
             label(for="loginName") Enter your name
-            input#loginName(type="text", required, placeholder="User name", v-model="inputName").form-control
+            input#loginName(type="text",
+            required,
+            placeholder="User name",
+            v-model="inputName").form-control
           .form-group.text-left
+            label(for="loginLastname") Enter your surname
+            input#loginLastname(type="text",
+            required,
+            placeholder="User lastname",
+            v-model="inputLastname").form-control
+          // .form-group.text-left
             label(for="loginPass") Enter your password
-            input#loginPass(type="password", required, placeholder="Password", v-model="inputPass").form-control
+            input#loginPass(type="password",
+            required,
+            placeholder="Password",
+            v-model="inputPass").form-control
           .form-group
-            button(type="submit").btn.btn-block.btn-info Login (actually register)
+            button(type="submit").btn.btn-block.btn-info Enter

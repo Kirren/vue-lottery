@@ -1,0 +1,32 @@
+.btn {
+  cursor: pointer;
+  margin: .25rem;
+  &:focus {
+    box-shadow: none;
+  }
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+.number-btn {
+  width: 2.7rem;
+  font-weight: 700;
+  &:hover {
+    color: transparentize(#000, .3);
+    border-color: transparent;
+    outline: none;
+    box-shadow: none;
+  }
+}
+
+.form-check-input{
+  &:disabled {
+    cursor: not-allowed;
+    & + .form-check-label {
+      color: transparentize(#000, .7);
+    }
+  }
+}
+.form-check-label {
+  padding-left: 0;
+}

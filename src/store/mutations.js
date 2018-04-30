@@ -1,3 +1,4 @@
+/*
 export default {
   [LOGIN] (state) {
     state.pending = true
@@ -13,3 +14,4 @@ export default {
     state.isLoggedIn = false
   }
 }
+*/

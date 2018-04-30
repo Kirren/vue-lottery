@@ -1,25 +1,31 @@
-import Vuex from 'vuex'
-
 import LoginBlock from '@/components/LoginBlock/LoginBlock'
+
+import { mapState } from 'vuex'
 
 export default {
   name: 'PageHeader',
   data () {
     return {
-      usersAmount: 4779,
-      user: {
-        name: 'Name Lastname',
-        email: 'email@mail.com'
-      }
+      usersAmount: 4444
     }
   },
-  computed: {
-    ...Vuex.mapGetters(['isLoggedIn'])
-  },
+  computed: mapState({
+    userName: state => state.user.name,
+    userLastname: state => state.user.lastname,
+    isLoggedIn: state => state.user.isLoggedIn
+  }),
   methods: {
-    ...Vuex.mapActions(['logout'])
+    logout () {
+      console.log('logout...')
+      this.$store.dispatch('logout')
+        .then(() => { this.$router.push('/') })
+    }
   },
   components: {
     LoginBlock
+  },
+  created () {
+    console.log('current user: ' + this.$store.state.user.name)
+    console.log('registered user: ' + this.userName + ' ' + this.userLastname)
   }
 }

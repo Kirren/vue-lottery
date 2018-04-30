@@ -1,12 +1,12 @@
 import PageHeader from '@/components/PageHeader/PageHeader'
-// import UsersList from '@/components/UsersList/UsersList'
+import LotteryBlock from '@/components/LotteryBlock/LotteryBlock'
 import PageFooter from '@/components/PageFooter/PageFooter'
 
 export default {
-  name: 'HomePage',
+  name: 'ProfilePage',
   components: {
     PageHeader,
-    // UsersList,
+    LotteryBlock,
     PageFooter
   }
 }

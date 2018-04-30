@@ -1,26 +1,20 @@
-// import $ from 'jquery'
+import $ from 'jquery'
 
 export default {
   name: 'LoginBlock',
-  computed: {
-    users () {
-      return this.$store.getters.users
-    }
-  },
   data () {
     return {
       inputName: '',
-      inputPass: ''
+      inputLastname: ''
     }
   },
   methods: {
     login () {
-      this.$store.dispatch('login', {
-        username: this.inputName,
-        password: this.inputPass
-      }).then(res => {
-        this.$router.push('/')
-      })
+      this.$store.dispatch('login', [this.inputName, this.inputLastname])
+        .then(() => {
+          this.$router.push('/success')
+          $('#loginModal').modal('toggle')
+        })
     }
   }
 }

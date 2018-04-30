@@ -1,4 +1,4 @@
-nav.navbar.navbar-expand-lg.navbar-light.bg-light
+nav.navbar.navbar-expand-md.navbar-light.bg-light
   router-link(to="/").navbar-brand Нас уже:
     strong  {{ usersAmount}}
   button(type="button", data-toggle="collapse",
@@ -11,7 +11,10 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
         router-link#profileLink(to="#").nav-link Кабинет
           span.sr-only (current)
       li.nav-item.dropdown
-        a#lotteryLink(href="#", data-toggle="dropdown", aria-haspopup="true", aria-expanded="false").nav-link.dropdown-toggle Лотерея
+        a#lotteryLink(href="#",
+        data-toggle="dropdown",
+        aria-haspopup="true",
+        aria-expanded="false").nav-link.dropdown-toggle Лотерея
         ul(aria-labelledby="lotteryLink").dropdown-menu
           li.dropdown-item
             router-link(to="#") Архив Ваших розыгрышей
@@ -62,11 +65,14 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
 
     ul.navbar-nav.d-none.d-md-inline-block
       li(v-if="isLoggedIn").nav-item.dropdown
-        a#userLink(href="#", data-toggle='dropdown', aria-haspopup="true", aria-expanded="false").nav-link.dropdown-toggle {{ user.name }}
+        a#userLink(href="#",
+        data-toggle='dropdown',
+        aria-haspopup="true",
+        aria-expanded="false").nav-link.dropdown-toggle {{ userName }} {{ userLastname }}
         ul(aria-labelledby="userLink").dropdown-menu.dropdown-menu-right
           li.dropdown-item
-            strong {{ user.name }}
-            p {{ user.email }}
+            strong(v-if="userName") {{ userName }}
+            // p {{ user.email }}
           li.dropdown-divider
           li.dropdown-item
             router-link(to="#")
@@ -79,8 +85,8 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
             router-link(to="#") Сменить пароль
           li.dropdown-divider
           li.dropdown-item
-            router-link(to="/", v-if="isLoggedIn", @click="logout")
-              | log out
+            a(v-if="isLoggedIn", href="#", @click="logout")
+              | Выйти
               i.fa.fa-sign-out.ml-2
       li(v-else).nav-item
         button(type="button", data-toggle="modal", data-target="#loginModal").btn.btn-primary Log in
